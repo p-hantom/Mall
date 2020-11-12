@@ -1,0 +1,39 @@
+.sideDrawer {
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    background-color: white;
+    transition: transform 0.3s ease-out;
+}
+
+.open {
+    transform: translateX(0);
+}
+
+.close {
+    transform: translateX(-100%);
+}
+
+.faTimes {
+    position: fixed;
+    font-size: 25px;
+    cursor: pointer;
+    left: 440px;
+    top: 20px;
+    z-index: 200;
+    color: white;
+}
+
+.faClose {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.faOpen {
+    visibility: visible;
+    opacity: 1;
+}

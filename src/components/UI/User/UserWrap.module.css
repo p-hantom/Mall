@@ -1,0 +1,17 @@
+.wrap {
+    padding: 40px 0;
+    background-color: #e72955;
+    
+}
+
+.container {
+    background-color: white;
+    width: 350px;
+    display: block;
+    margin: 0 auto;
+}
+
+.inputCon {
+    padding: 20px;
+
+}

@@ -1,0 +1,20 @@
+.Button {
+    border: none;
+    background-color: #c60023;
+    color: #eee;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.search {
+    position: absolute;
+    width: 80px;
+    height: 41px;
+}
+
+.userInfoSubmit {
+    width: 100%;
+    padding: 6px 0;
+    font-size: 20px;
+}

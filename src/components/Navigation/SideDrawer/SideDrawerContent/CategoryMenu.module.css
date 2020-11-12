@@ -1,0 +1,18 @@
+.cateMenu {
+    transition: transform 0.3s ease-out;
+    display: block;
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.in {
+    transform: translateX(0);
+}
+
+.out {
+    transform: translateX(100%);
+    visibility: hidden;
+}

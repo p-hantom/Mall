@@ -1,0 +1,15 @@
+.link {
+    color: #999;
+    cursor: pointer;
+    text-decoration: none;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.link:hover{
+    color: #e80012;
+}
+
+.linkDiv {
+    display: inline-block;
+}
