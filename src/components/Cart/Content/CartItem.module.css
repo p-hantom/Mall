@@ -1,0 +1,29 @@
+.leftCol {
+    float: left;
+    padding-left: 220px;
+    width: 60%;
+}
+
+.rightCol {
+    float: right;
+    /* width: 20%; */
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.checkboxDiv {
+    float: left;
+    margin-right: 15px;
+    margin-top: 75px;
+    margin-left: -220px;
+}
+
+.name {
+    color: #007185;
+    font-size: 18px;
+    font-weight: 700;
+}

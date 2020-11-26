@@ -1,10 +1,10 @@
 import React from 'react'
 import Card from './Card/Card'
 
-import styles from './CardList.module.css'
+import styles from './CardLayout.module.css'
 
 const cardList = (props) => (
-    <div className={styles.cardList}>
+    <div className={styles.cardLayout}>
         <Card title="Electronics"/>
         <Card title="Electronics"/>
         <Card title="Electronics"/>

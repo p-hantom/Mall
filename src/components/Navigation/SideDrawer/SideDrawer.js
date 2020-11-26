@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './SideDrawer.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { withRouter } from "react-router-dom";
 
 import Aux from '../../../hoc/Auxiliary'
 import Backdrop from '../../UI/Backdrop/Backdrop'
@@ -25,7 +26,7 @@ const dpmt = [
 ]
 
 const categoryCon = [
-    {text: 'Headphones'},
+    {text: '手机'},
     {text: 'Home Audio'},
     {text: 'Camera'},
     {text: 'Television'},
@@ -51,7 +52,13 @@ class SideDrawer extends Component {
 
     clickCategoryHandler = (categoryId) => {
         this.closedHandler();
+        console.log(categoryId)
         //to do
+        this.props.history.push({
+            pathname: '/searchResult',
+            search: `?keyword=${categoryId}`,
+            state: { keyword: categoryId }
+        })
     }
 
     clickReturnHandler = () => {
@@ -74,41 +81,6 @@ class SideDrawer extends Component {
             classes = [styles.sideDrawer, styles.open];
             faTimesClasses = [styles.faTimes, styles.faOpen];
         }
-
-        // const dpmtList = dpmt.map(item => {
-        //     return (
-        //         // to be fixed -> item.id
-        //         <Item 
-        //             showArrow={true}
-        //             text={item.text} 
-        //             clicked={() => this.clickDpmtHandler(item.text)}/>
-        //     )
-        // })
-
-        // const categoryList = categoryCon.map(item => {
-        //     return (
-        //         // to be fixed -> item.id
-        //         <Item
-        //             showArrow={false}
-        //             text={item.text} 
-        //             clicked={() => this.clickCategoryHandler(item.text)}/>
-        //     )
-        // })
-
-        // const content1 = this.state.showSubContent ?
-        // (
-        //     <div className={classes.join(' ')}>
-        //         <ReturnButton clicked={this.clickReturnHandler} />
-        //         <Title text={this.state.dpmtId} />
-        //         {categoryList}
-        //     </div>
-        // )
-        // : (
-        //     <div className={classes.join(' ')}>
-        //         <Title text="Shop By Department" />
-        //         {dpmtList}
-        //     </div>
-        // )
 
         const content1 = !this.state.showSubContent ?
         (
@@ -155,4 +127,4 @@ class SideDrawer extends Component {
     }
 }
 
-export default SideDrawer;
+export default withRouter(SideDrawer);

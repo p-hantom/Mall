@@ -1,0 +1,25 @@
+.cartDiv {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    color: #444;
+}
+
+.cartListDiv {
+    margin-top: 20px;
+    border-top: 0.5px solid #ddd;
+    padding: 15px 10px;
+}
+
+.priceHeader {
+    float: right;
+    font-size: 14px;
+    color: #565659;
+    padding-right: 10px;
+}

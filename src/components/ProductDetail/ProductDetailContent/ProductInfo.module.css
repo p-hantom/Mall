@@ -1,0 +1,17 @@
+.infoDiv {
+    margin-left: 30%;
+}
+
+.name {
+    font-size: 24px;
+}
+
+.price {
+    color: #666;
+    font-size: 14px;
+}
+
+.priceSpan {
+    color: #B12704;
+    font-size: 18px;
+}

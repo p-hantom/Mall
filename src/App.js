@@ -5,15 +5,26 @@ import './App.css';
 import Layout from './hoc/Layout/Layout'
 import Login from './components/Login/Login'
 import IndexPage from './components/IndexPage/IndexPage'
+import SearchResult from './components/SearchResult/SearchResult'
+import ProductDetail from './components/ProductDetail/ProductDetail';
+import Cart from './components/Cart/Cart'
 
 function App() {
-  return (
+  const LayoutRouter = (
     <Layout>
       <Switch>
-        <Route path="/login" component={Login} />
+        <Route path="/searchResult" component={SearchResult} />
+        <Route path="/detail" component={ProductDetail} />
+        <Route path="/cart" component={Cart} />
         <Route path="/" component={IndexPage} />
       </Switch>
     </Layout>
+  )
+  return (
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/" render={ props => LayoutRouter} />
+      </Switch>
   );
 }
 

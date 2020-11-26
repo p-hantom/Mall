@@ -4,9 +4,14 @@ import Navigation from '../../components/Navigation/Navigation'
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer'
 import Aux from '../Auxiliary'
 
+import axios from 'axios'
+
 class Layout extends Component {
     state = {
         showSideDrawer: false
+    }
+
+    componentDidMount() {
     }
 
     sideDrawerToggleHandler = () => {

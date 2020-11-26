@@ -1,9 +1,10 @@
 .search {
-    padding: 40px 0 30px 270px;
+    padding: 0 30px;
+    display: inline-block;
 }
 
 .searchInput {
-    width: 550px;
+    width: 350px;
     padding: 10px;
     border: 2px solid #c60023;
     font-size: 15px;

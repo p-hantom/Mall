@@ -3,16 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from './UserInfoInput.module.css'
 
-const userInfoInput = (props) => (
+const userInfoInput = ({name, faType, placeholder, pw, onChange}) => (
     <div className={styles.item}>
         <div className={styles.fa}>
-            <FontAwesomeIcon icon={props.faType} />
+            <FontAwesomeIcon icon={faType} />
         </div>
         
         <input 
             className={styles.input}
-            placeholder={props.placeholder}
-            type={props.pw ? 'password' : null}/>
+            placeholder={placeholder}
+            type={pw ? 'password' : null}
+            name={name}
+            onChange={e => onChange(e)}/>
     </div>
 )
 

@@ -10,9 +10,9 @@ const userWrap = (props) => (
             <Title title={props.title} />
             <div className={styles.inputCon}>
                 {props.children}
-                <Button btnType="userInfoSubmit">
+                {/* <Button btnType="userInfoSubmit">
                     {props.submitTitle}
-                </Button>
+                </Button> */}
             </div>
         </div>
     </div>

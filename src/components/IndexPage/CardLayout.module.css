@@ -1,0 +1,6 @@
+.cardLayout {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    width: 90%;
+}
