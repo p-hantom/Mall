@@ -5,7 +5,7 @@ import styles from './ReturnButton.module.css'
 
 const returnButton = (props) => (
     <div onClick={props.clicked} className={styles.rtnButtonDiv}>
-        <FontAwesomeIcon icon={faArrowLeft} className={styles.faArrowLeft}/>
+        <FontAwesomeIcon  icon={faArrowLeft} className={styles.faArrowLeft}/>
         <span>MAIN MENU</span>
     </div>
 )

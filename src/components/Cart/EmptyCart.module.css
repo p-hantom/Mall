@@ -1,0 +1,21 @@
+.emptyCartDiv {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 28px;
+    color: rgb(15, 15, 15);
+    margin-bottom: 20px;
+}
+
+.homeLink {
+    cursor: pointer;
+    color: #007185;
+}
+
+.homeLink:hover {
+    color: #ac381b;
+}

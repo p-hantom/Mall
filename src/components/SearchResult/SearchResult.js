@@ -58,7 +58,10 @@ class SearchResult extends Component {
             this.props.history.push({
                 pathname: '/detail',
                 search: `?productId=${id}`,
-                state: { detailData: res ? res.data.data : null }
+                state: { 
+                    detailData: res ? res.data.data : null,
+                    id: id 
+                }
             })
         })
     }

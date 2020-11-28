@@ -14,7 +14,6 @@
 .cartListDiv {
     margin-top: 20px;
     border-top: 0.5px solid #ddd;
-    padding: 15px 10px;
 }
 
 .priceHeader {
@@ -22,4 +21,12 @@
     font-size: 14px;
     color: #565659;
     padding-right: 10px;
+}
+
+.unitPrice {
+    padding-right: 30px;
+}
+
+.totalDiv {
+    clear: both;
 }

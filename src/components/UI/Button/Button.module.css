@@ -18,3 +18,15 @@
     padding: 6px 0;
     font-size: 20px;
 }
+
+.addToCart {
+    width: 130px;
+    height: 40px;
+    font-weight: 400;
+}
+
+.checkout {
+    width: 130px;
+    height: 40px;
+    font-weight: 400;
+}

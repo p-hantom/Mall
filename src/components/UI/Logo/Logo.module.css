@@ -4,6 +4,10 @@
     text-decoration: none;
 }
 
+.logo:hover {
+    color: #8f041d;
+}
+
 .index {
     /* position: absolute;
     left: 120px;

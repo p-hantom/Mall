@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styles from './ProductInfo.module.css'
 
 const productInfo = ({data}) => {
@@ -12,6 +13,7 @@ const productInfo = ({data}) => {
                     <span className={styles.priceSpan}>{' '+price+' '}</span>元
                 </div>
             </div>
+            
         </div>
     )
 }

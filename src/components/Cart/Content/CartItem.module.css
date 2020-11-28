@@ -1,3 +1,13 @@
+.itemDiv {
+    border-bottom: 0.5px solid #ddd;
+    /* overflow: hidden; */
+    /* For dropdown not to be hidden by div -> any better way? */
+    overflow-x: visible;
+    overflow-y: visible;
+    min-height: 150px;
+    padding: 10px 10px;
+}
+
 .leftCol {
     float: left;
     padding-left: 220px;
@@ -9,10 +19,16 @@
     /* width: 20%; */
 }
 
-.price {
+.totalPrice {
     font-size: 24px;
     font-weight: 700;
     color: #333;
+}
+
+.unitPrice {
+    font-size: 18px;
+    color: #444;
+    padding-right: 20px;
 }
 
 .checkboxDiv {
@@ -26,4 +42,22 @@
     color: #007185;
     font-size: 18px;
     font-weight: 700;
+    cursor: pointer;
+}
+
+.name:hover {
+    color: #ac381b;
+}
+
+.delete {
+    color: #999;
+    padding: 0 15px;
+    border-left: 0.5px solid #999;
+    cursor: pointer;
+    line-height: 40px;
+}
+
+.dropdownDiv {
+    float: left;
+    margin-right: 20px;
 }
