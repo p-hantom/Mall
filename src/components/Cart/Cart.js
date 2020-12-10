@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import CartItem from './Content/CartItem'
 import Button from '../UI/Button/Button'
 import EmptyCart from './EmptyCart'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Util from '../../util/util'
 import CartService from '../../service/CartService'
 import Product from '../../service/ProductService'
@@ -13,7 +15,8 @@ const _cart = new CartService();
 class Cart extends Component {
     state = {
         cartList: [],
-        total: 0
+        total: 0,
+        imageHost: ''
     }
     componentDidMount() {
         this.getCartList();
@@ -28,7 +31,8 @@ class Cart extends Component {
             console.log('cart.js/cartlist: ',res)
             this.setState({
                 cartList: res.data.data.cartProductVoList,
-                total: res.data.data.cartTotalPrice
+                total: res.data.data.cartTotalPrice,
+                imageHost: res.data.data.imageHost
             })
         })
     }
@@ -82,20 +86,22 @@ class Cart extends Component {
         }
     }
     render() {
-        const CartList = this.state.cartList.map(item => 
+        const CartList = this.state.cartList.map((item,index) => 
             <CartItem 
+                key={index}
                 product={item} 
+                imageHost={this.state.imageHost}
                 onDeletePrd={this.deletePrdHandler}
                 onChangeCheck={() => this.changeCheckHandler(item.productId, item.productChecked)}
                 onClickPrdName={this.clickPrdNameHandler}
-                onSelectQty={(qty) => this.updateQtyHandler(item.productId, qty)}/>
+                updatePrdNumHandler={(qty) => {return this.updateQtyHandler(item.productId, qty)}}/>
         )
 
         const View = this.state.cartList.length===0 ?
             <EmptyCart />
             : (
-                <div>
-                    <div className={styles.cartDiv}>
+                <div className={styles.cartDiv}>
+                    <div>
                         <h1 className={styles.title}>Shopping Cart</h1>
                         <div className={styles.priceHeader}>
                             <span className={styles.unitPrice}>Unit Price</span>
@@ -106,13 +112,18 @@ class Cart extends Component {
                             {CartList}
                         </div>
                     </div>
-                    <div className={styles.totalDiv}>
-                        <span>Subtotal:</span>
-                        <span>{' '+this.state.total}元</span>
+                    <div className={styles.footer}>
+                        <div className={styles.totalDiv}>
+                            <span>Subtotal:</span>
+                            <span className={styles.subtotalNum}>{' '+this.state.total}元</span>
+                        </div>
+                        <div>
+                            <Button btnType="checkout">
+                                <span className={styles.faCart}><FontAwesomeIcon icon={faShoppingCart} /></span>
+                                Checkout</Button>
+                        </div>
                     </div>
-                    <div>
-                        <Button btnType="checkout">Checkout</Button>
-                    </div>
+                    
                 </div>
             )
 

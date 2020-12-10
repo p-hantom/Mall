@@ -1,5 +1,5 @@
 .infoDiv {
-    margin-left: 30%;
+    /* margin-left: 30%; */
 }
 
 .name {
@@ -14,4 +14,14 @@
 .priceSpan {
     color: #B12704;
     font-size: 18px;
+}
+
+.inStock {
+    color: #007600;
+    font-size: 14px;
+}
+
+.unavailable {
+    color: #B12704;
+    font-size: 14px;
 }

@@ -1,0 +1,18 @@
+.input {
+    width: 60px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 10px;
+}
+
+.prdNumAdder {
+    line-height: 28px;
+    border: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle;
+    width: 20px;
+    background-color: #fff;
+}

@@ -50,19 +50,13 @@ class SearchResult extends Component {
         })
     }
     onClickProductHandler = (id) => {
-        const params = {
-            productId: id
-        }
-        _product.getProductDetail(params).then(res => {
-            console.log(res.data.data);
-            this.props.history.push({
-                pathname: '/detail',
-                search: `?productId=${id}`,
-                state: { 
-                    detailData: res ? res.data.data : null,
-                    id: id 
-                }
-            })
+        
+        this.props.history.push({
+            pathname: '/detail',
+            search: `?productId=${id}`,
+            state: {
+                id: id 
+            }
         })
     }
     onPageNumChange = (pageNum) => {
@@ -77,8 +71,7 @@ class SearchResult extends Component {
         const ResultList = prdList.map(item => {
             return (
                 <ResultItem 
-                    title={item.name}
-                    price={item.price}
+                    data={item}
                     key={item.id}
                     onClick={() => this.onClickProductHandler(item.id)}/>
             )

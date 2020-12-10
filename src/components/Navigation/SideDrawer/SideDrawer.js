@@ -121,7 +121,10 @@ class SideDrawer extends Component {
                 <div className={classes.join(' ')}>
                     {content}
                 </div>
-                <FontAwesomeIcon icon={faTimes} className={faTimesClasses.join(' ')} onClick={this.closedHandler} />
+                <div className={faTimesClasses.join(' ')}>
+                    <FontAwesomeIcon icon={faTimes} onClick={this.closedHandler} />
+                </div>
+                
             </Aux>
         )
     }

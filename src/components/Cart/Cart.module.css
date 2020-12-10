@@ -29,4 +29,18 @@
 
 .totalDiv {
     clear: both;
+    font-size: 18px;
+    color: #0f1111;
+    margin-bottom: 5px;
+}
+.subtotalNum {
+    font-weight: 700;
+}
+
+.footer {
+    float: right;
+    padding-top: 20px;
+}
+.faCart {
+    padding-right: 7px;
 }
