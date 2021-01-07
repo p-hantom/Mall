@@ -1,0 +1,50 @@
+.cardContainer {
+    width: 100%;
+    height: 560px;
+}
+.card {
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    padding: 50px 50px;
+    background-size: cover;
+}
+.card1 {
+    background: url('../../assets/images/card1.jpg') no-repeat ;
+}
+.card2 {
+    background: url('../../assets/images/card2.jpg') no-repeat ;
+}
+.content {
+    height: 450px;
+    display: table;
+    width: 100%;
+}
+.inside {
+    padding: 20px 80px;
+    border: 7px double #fff;
+    transition: .3s;
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.inside:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.title {
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: .2em;
+}
+.passage {
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+}

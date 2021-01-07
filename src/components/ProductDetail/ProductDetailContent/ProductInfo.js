@@ -10,7 +10,7 @@ const productInfo = ({data}) => {
             <div>
                 <div>{subtitle}</div>
                 <div className={styles.price}>Price: 
-                    <span className={styles.priceSpan}>{' '+price+' '}</span>元
+                    ￥<span className={styles.priceSpan}>{' '+price+' '}</span>
                 </div>
                 {
                     stock>0 ? 

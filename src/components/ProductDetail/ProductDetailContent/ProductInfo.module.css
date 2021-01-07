@@ -1,14 +1,19 @@
 .infoDiv {
-    /* margin-left: 30%; */
+    display: inline-block;
 }
 
 .name {
-    font-size: 24px;
+    font-size: 28px;
+    color: #191919;
+    line-height: 1.8em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
 }
 
 .price {
     color: #666;
     font-size: 14px;
+    padding-bottom: 1.8em;
 }
 
 .priceSpan {

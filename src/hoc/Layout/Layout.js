@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Navigation from '../../components/Navigation/Navigation'
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer'
 import Aux from '../Auxiliary'
+import Footer from '../../components/Footer/Footer'
 
 import axios from 'axios'
 
@@ -29,6 +30,7 @@ class Layout extends Component {
                     open={this.state.showSideDrawer} 
                     closed={this.sideDrawerToggleHandler}/>
                 {this.props.children}
+                <Footer />
             </Aux>
         )
     }

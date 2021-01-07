@@ -1,0 +1,25 @@
+.section {
+    padding: 2.7em 30px 1.2em;
+}
+
+.sectionContent {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    padding: 10px 0 0;
+}
+
+.title {
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 0.3em;
+    color: #191919;
+    line-height: 1.8em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.passage {
+    text-align: center;
+    color: #7F7F7F;
+    line-height: 1.8em;
+    font-family: 'Lato', sans-serif;
+}

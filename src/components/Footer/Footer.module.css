@@ -1,0 +1,53 @@
+.footer {
+    padding: 20px 30px 40px 20px;
+    width: 100%;
+    height: auto;
+    background: #171717;
+    font-weight: 300;
+    color: #a5a5a5;
+    font-family: 'Lato', sans-serif;
+}
+.inside {
+    display: block;
+}
+.main {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 30px 0 0;
+    max-width: 1100px;
+}
+.navMenu {
+    width: 300px;
+    margin-top: 20px;
+}
+.navItem {
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: .4s;
+}
+.navItem:hover {
+    color: white;
+}
+.centerText {
+    margin-top: 20px;
+    width: 300px;
+}
+.textWidgetTitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    color: white;
+}
+.search {
+    margin-top: 20px;
+    width: 300px;
+}
+
+.secondary {
+    margin: 0 auto;
+    padding: 30px 0 20px 0;
+    text-align: center;
+    color: #747475;
+}

@@ -1,0 +1,50 @@
+.imgCon {
+    height: 600px;
+    width: 100%;
+}
+
+.img {
+    width: auto;
+    height: auto;
+}
+
+.item {
+    height: 600px;
+}
+
+.caption {
+    bottom: 30%;
+}
+.title {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.1em;
+    font-size: 43px;
+    font-weight: 700;
+    letter-spacing: .3em;
+}
+.description {
+    font-size: 28px;
+    padding: 0;
+    margin-bottom: .9em;
+    color: #fff;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.carouselItem {
+    width: 100%;
+    height: 600px;
+    zoom: 1;
+    /* float: left; */
+    /* margin-right: -100%; */
+    /* position: relative; */
+    opacity: 1;
+    /* display: block; */
+    background-position: center 0.1px;
+}
+.carouselItem1 {
+    background: url('../../../assets/images/banner1.jpg') no-repeat fixed 50% 50%;
+}
+.carouselItem2 {
+    background: url('../../../assets/images/banner2.jpg') no-repeat fixed 50% 50%;
+}

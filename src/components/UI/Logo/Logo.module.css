@@ -1,11 +1,17 @@
 .logo {
-    color: #c60023;
+    color: #111;
     font-weight: bold;
     text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    transition: 0.2s ease;
 }
 
 .logo:hover {
-    color: #8f041d;
+    color:#9e9e9e;
+}
+
+.dot {
+    color: burlywood;
 }
 
 .index {
@@ -13,7 +19,7 @@
     left: 120px;
     top: 75px; */
     display: inline-block;
-    font-size: 26px;
+    font-size: 30px;
 }
 
 .small {

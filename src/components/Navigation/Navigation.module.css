@@ -1,25 +1,88 @@
 .navBar {
     border-bottom: 1px solid #eee;
+    transition: 0.2s ease;
+    padding: 12px 0 14px;
+    width: 100%;
+    line-height: 26px;
+    height: 52px;
+    position: relative;
 }
 
-.navigation {
-    width: 90%;
-    margin: 0 auto;
-    display: block;
-    height: 40px;
-    line-height: 40px;
-}
-
-.navLeft {
-    height: 100%;
+.logo {
+    position: relative;
+    display: inline-block;
+    margin-left: 30px;
     float: left;
 }
-
-.navRight {
+.secondaryNav {
     float: right;
+    right: 30px;
+    /* top: 50%;
+    margin-top: -15px; */
+    position: absolute;
+}
+.mainNav {
+    right: 150px;
+    position: absolute;
 }
 
-.fa {
-    color: #999;
-    font-size: 20px;    
+.faLink {
+    color: #9e9e9e;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 400;
+    font-family:'Lato', sans-serif;
+    transition: 0.2s ease;
+    margin-left: 20px;
 }
+.faLink:hover{
+    color: #111;
+}
+
+.inputContainer {
+    transition: 0.2s ease;
+    /* visibility: visible; */
+    display: block;
+}
+.closeInputContainer {
+    display: none;
+    /* visibility: hidden; */
+}
+.searchInput {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    width: 100%;
+    height: 42px;
+    padding: 2px;
+    font-size: 18px;
+    background: #eaeaea;
+    color: #b1b1b1;
+    border-radius: 0;
+    border: none;
+    text-align: center;
+}
+.drawerToggle {
+    display: none;
+}
+
+
+/* In phone's size */
+@media (max-width: 800px) {
+    .mainNav {
+        display: none;
+    }
+    .logo {
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+    .drawerToggle {
+        display: block;
+        position: absolute;
+        top: 13px;
+        left: 4%;
+        z-index: 100;
+    }
+}
+

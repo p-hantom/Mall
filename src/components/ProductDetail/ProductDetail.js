@@ -1,14 +1,14 @@
-import React, {Component} from 'react'
-import ProductPic from './ProductDetailContent/ProductPic'
-import ProductInfo from './ProductDetailContent/ProductInfo'
-import DropDown from '../UI/DropDownButton/DropDownButton'
+import React, { Component } from 'react'
+// import ProductPic from './ProductDetailContent/ProductPic'
+// import ProductInfo from './ProductDetailContent/ProductInfo'
+// import DropDown from '../UI/DropDownButton/DropDownButton'
 import Button from '../UI/Button/Button'
 import Image from '../UI/Image/Image'
 import CartService from '../../service/CartService'
 import ProductService from '../../service/ProductService'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 
 import styles from './ProductDetail.module.css'
 import ProductNumAdder from '../UI/ProductNumAdder/ProductNumAdder'
@@ -31,7 +31,7 @@ class ProductDetail extends Component {
             this.setState({
                 data: res.data.data,
                 stock: res.data.data.stock,
-                qtyNum: res.data.data.stock===0 ? 0 : 1
+                qtyNum: res.data.data.stock === 0 ? 0 : 1
             })
         })
     }
@@ -42,44 +42,59 @@ class ProductDetail extends Component {
         console.log(prdNum)
     }
     addToCartHandler = () => {
-        console.log('add')
         _cart.addToCart({
             productId: this.props.location.state.id,
             count: this.state.qtyNum
-        }).then(res => {console.log(res)})
+        }).then(res => { console.log(res) })
     }
     render() {
-        const {qtyNum, data, stock} = this.state;
-        if( !data )   return null;
+        const { qtyNum, data, stock } = this.state;
+        if (!data) return null;
+        const { name, price, subtitle } = data;
+
         return (
             <div className={styles.main}>
-                {/* <div className={styles.imgCon}>
-                        <img className={styles.img} src={data.imageHost+data.mainImage} />
-                    </div> */}
-                <Image mainImage={data.mainImage}
-                    imageHost={data.imageHost}
-                    imgDivType='detailLarge'/>
-                <ProductInfo data={data} />
-                <div className={styles.infoDiv}>
-                    <ul>
-                        <li>
-                        <ProductNumAdder 
-                        value={qtyNum} 
-                        stock={stock}
-                        updateNumber={this.updatePrdNumHandler}/>
-                        </li>
-                        <li>
-                        <Button btnType="addToCart" clicked={this.addToCartHandler}>
-                        <FontAwesomeIcon icon={faShoppingCart} className={styles.faShoppingCart} />
-                        {' '}Add to Cart
-                    </Button>
-                        </li>
-                    </ul>
-                    
-                    
+                <div className={styles.section}>
+                    <div className={styles.imgContainer}>
+                        <Image mainImage={data.mainImage}
+                            imageHost={data.imageHost}
+                            imgDivType='detailLarge' />
+                    </div>
+
+                    <div className={styles.infoDiv}>
+                        <div className={styles.name}>{name}</div>
+                        <div>
+                            <div>{subtitle}</div>
+                            <div className={styles.price}>Price:
+                                ￥<span className={styles.priceSpan}>{' ' + price + ' '}</span>
+                            </div>
+                            {
+                                stock > 0 ?
+                                    <div className={styles.inStock}>In Stock:
+                                    <span className={styles.inStock}>{' ' + stock + ' '}</span>
+                                    </div> :
+                                    <div className={styles.unavailable}>Unavailable</div>
+                            }
+
+                        </div>
+                        <ul>
+                            <li className={styles.adderDiv}>
+                                <ProductNumAdder
+                                    value={qtyNum}
+                                    stock={stock}
+                                    updateNumber={this.updatePrdNumHandler} />
+                            </li>
+                            <li className={styles.addToCartDiv}>
+                                <Button btnType="addToCart" clicked={this.addToCartHandler}>
+                                    <FontAwesomeIcon icon={faShoppingBag} className={styles.faShoppingCart} />
+                                    {' '}ADD TO CART
+                                </Button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
+
         )
     }
 }

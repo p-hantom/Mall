@@ -8,7 +8,7 @@ const logo = (props) => (
         to='/'
         exact={true}
         className={[styles.logo, styles[props.logoStyle]].join(' ')}>
-        MALL
+        MALL{<span className={styles.dot}>.</span>}
     </NavLink>
 )
 

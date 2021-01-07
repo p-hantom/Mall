@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ResultItem from './Content/ResultItem'
 import Aux from '../../hoc/Auxiliary'
-import SearchHeader from '../SearchHeader/SearchHeader'
+import ProductCard from '../UI/ProductCard/ProductCard'
 import Pagination from '../UI/Pagination/Pagination'
 
 import Product from '../../service/ProductService'
@@ -23,7 +23,7 @@ class SearchResult extends Component {
     state={
         prdList: results,
         pageNum: 1,         //current page num
-        total: 100
+        total: 0
     }
     componentDidMount() {
         this.getProductList();
@@ -67,26 +67,51 @@ class SearchResult extends Component {
         })
     }
     render() {
-        const {prdList} = this.state;
-        const ResultList = prdList.map(item => {
+        const {prdList, total} = this.state;
+        // const ResultList1 = prdList.map(item => {
+        //     return (
+        //         <ResultItem 
+        //             data={item}
+        //             key={item.id}
+        //             // onClick={() => this.onClickProductHandler(item.id)}
+        //             />
+        //     )
+        // })
+        const ResultList = prdList.map((item, index) => {
             return (
-                <ResultItem 
-                    data={item}
-                    key={item.id}
-                    onClick={() => this.onClickProductHandler(item.id)}/>
+                <div className={styles.productDiv} key={index}>
+                    <ProductCard 
+                        data={item}
+                        key={item.id}
+                        onClick={() => this.onClickProductHandler(item.id)}/>
+                </div>
             )
         })
         return (
             <Aux>
-                <div className={styles.searchResult}>
-                    {ResultList}
-                </div>
-                <Pagination defaultCurrent={1}
-                    current={this.state.pageNum}
-                    defaultPageSize={10} 
-                    total={this.state.total}
-                    onChange={(pageNum) => this.onPageNumChange(pageNum)}/>
-                <div>hello</div>
+                <section className={styles.headerSection}>
+                    <h1 className={styles.headerTitle}>
+                        SHOP
+                    </h1>
+                </section>
+                <section className={styles.main}>
+                    <div>
+                        <p className={styles.totalInfo}>Showing all {total} results</p>
+                    </div>
+                    <div className={styles.productsDiv}>
+                        {ResultList}
+                    </div>
+                    {/* <div className={styles.searchResult}>
+                        {ResultList}
+                    </div> */}
+                    <Pagination defaultCurrent={1}
+                        current={this.state.pageNum}
+                        defaultPageSize={10} 
+                        total={this.state.total}
+                        onChange={(pageNum) => this.onPageNumChange(pageNum)}/>
+                    <div>hello</div>
+                </section>
+                
             </Aux>
     
         )

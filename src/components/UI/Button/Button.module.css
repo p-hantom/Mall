@@ -1,10 +1,24 @@
-.Button {
+/* .Button {
     border: none;
     background-color: #c60023;
     color: #eee;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+} */
+
+.Button {
+    border: 1px solid #000;;
+    background: none;
+    color: #000;
+    font-size: 0.75em;
+    padding: .7em 1.3em .7em;
+    font-weight: normal;
+    line-height: 1.8em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    opacity: 1;
 }
 
 .search {
@@ -22,7 +36,34 @@
 .addToCart {
     width: 130px;
     height: 40px;
-    font-weight: 400;
+    /* font-weight: 400; */
+}
+.addToCart:hover {
+    color: white;
+    background-color: #000;
+}
+
+.carouselShopNow {
+    font-size: .5em;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 12px 20px;
+}
+.carouselShopNow:hover {
+    background-color: white;
+    color: #000;
+}
+
+.smallCard {
+    font-size: .5em;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 12px 5px;
+    display: inline-block;
+    margin-left: 15px;
+}
+.smallCard:hover {
+    opacity: 0.7;
 }
 
 .checkout {

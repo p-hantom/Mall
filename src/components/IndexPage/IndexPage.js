@@ -1,14 +1,21 @@
 import React from 'react'
-import SearchHeader from '../SearchHeader/SearchHeader'
+import Carousel from '../UI/Carousel/Carousel'
+import Section from './Section'
 import CardLayout from './CardLayout'
-
+import LargeCards from './LargeCards'
+import SecondSection from './SecondSection'
+import SmallCards from './SmallCards'
 import styles from './IndexPage.module.css'
 
 const index = (props) => {
     
     return (
         <div>
-            {/* <SearchHeader /> */}
+            <Carousel />
+            <Section />
+            <LargeCards />
+            <SecondSection />
+            <SmallCards />
             <CardLayout />
         </div>
     )

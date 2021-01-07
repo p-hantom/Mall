@@ -1,14 +1,28 @@
 .imgCon {
-    border: 1px solid #aaa;
+    opacity: 1;
+    cursor: pointer;
+    transition: opacity 0.25s ease-in-out 0s;
 }
-.img {
+.imgCon:hover {
+    opacity: 0.7;
+}
+/* .img {
     width: 100%;
     height: 100%;
-}
+} */
 
-.detailLarge {
+/* .detailLarge {
     width: 300px;
     height: 300px;
     float: left;
     margin-left: -350px;
+} */
+
+.img {
+    height: auto;
+    max-width: 100%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }

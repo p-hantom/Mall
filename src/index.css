@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 * {
   padding: 0;
   margin: 0;
@@ -11,6 +14,16 @@ div, h1, input{
   width: auto;
   height: auto;
 }
+h1, h2, h3 {
+  /* color: #191919; */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  color: #7f7f7f;
+  font-weight: 100;
+}
 
 .svg-inline--fa.fa-w-14 {
   width: 14px;
@@ -22,6 +35,10 @@ a {
 
 a:hover {
   text-decoration: none;
+}
+
+input:focus { 
+  outline: none !important;
 }
 
 li {
