@@ -7,8 +7,8 @@ class Image extends Component {
         return (
             <div className={[styles.imgCon,styles[this.props.imgDivType]].join(' ')}>
                 {
-                    !this.props.mainImage ? <img className={styles.img} src={brokenImage} />
-                        : <img className={styles.img} src={this.props.imageHost+this.props.mainImage} />
+                    !this.props.mainImage ? <img alt="" className={styles.img} src={brokenImage} />
+                        : <img alt="" className={styles.img} src={this.props.imageHost+this.props.mainImage} />
                 }
             </div>
         )

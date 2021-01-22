@@ -9,8 +9,8 @@ const resultItem = ({data, onClick}) => {
         <div className={styles.resultItem}>
             <div className={styles.imageDiv}>
                 {
-                    !mainImage ? <img className={styles.img} src={brokenImage} />
-                        : <img className={styles.img} src={imageHost+mainImage} />
+                    !mainImage ? <img alt="" className={styles.img} src={brokenImage} />
+                        : <img alt="" className={styles.img} src={imageHost+mainImage} />
                 }
                 
             </div>

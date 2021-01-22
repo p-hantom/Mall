@@ -22,18 +22,13 @@ class User {
         //   })
     }
     register(rgstInfo) {
-        return axios.post('/api/user/register.do', JSON.stringify({
-            username: rgstInfo.username,
-            password: rgstInfo.password,
-            email: "1380013800@qq.com",
-            phone: "1380013800",
-            question: "111",
-            answer: "222"
-            // email: rgstInfo.email,
-            // phone: rgstInfo.phone,
-            // question: rgstInfo.question,
-            // answer: rgstInfo.answer
-        }))
+        const params = _util.getParams(rgstInfo);
+        return _util.request('/api/user/register.do', params, 'post');
+    }
+    // Check Valid Username (or email, not implemented yet)
+    checkValidUsername(checkParams) {
+        const params = _util.getParams(checkParams);
+        return _util.request('/api/user/check_valid.do', params, 'post');
     }
     // 检查登录接口的数据是不是合法
     checkLoginInfo(loginInfo) {

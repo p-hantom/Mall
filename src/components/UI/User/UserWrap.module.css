@@ -1,7 +1,15 @@
 .wrap {
-    padding: 40px 0;
+    padding: 240px 0;
     background-color: #e72955;
-    
+    width: 100%;
+    height: 100%;
+    /* float: left; */
+    /* margin-right: -100%; */
+    /* position: relative; */
+    opacity: 1;
+    /* display: block; */
+    background-position: center 0.1px;
+    background: url('../../../assets/images/banner1.jpg') no-repeat fixed 50% 50%;
 }
 
 .container {

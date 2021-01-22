@@ -2,8 +2,6 @@ import React from 'react'
 import { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from '../Button/Button'
-import banner1 from '../../../assets/images/banner1.jpg'
-import banner2 from '../../../assets/images/banner2.jpg'
 
 import styles from './Carousel.module.css'
 

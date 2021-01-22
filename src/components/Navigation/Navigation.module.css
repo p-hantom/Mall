@@ -40,6 +40,10 @@
     color: #111;
 }
 
+.cartTotalText {
+    font-size: 14px;
+}
+
 .inputContainer {
     transition: 0.2s ease;
     /* visibility: visible; */

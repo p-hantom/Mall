@@ -19,6 +19,8 @@
     margin: 0 0 50px;
     padding: 50px 30px;
     width: 100%;
+    min-height: 500px;
+    overflow: auto;
 }
 .section {
     max-width: 1100px;

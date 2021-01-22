@@ -12,7 +12,6 @@ class ProductCard extends Component {
         isHover: false
     }
     onClickProductHandler = (id) => {
-        console.log('click')
         this.props.history.push({
             pathname: '/detail',
             search: `?productId=${id}`,
@@ -22,11 +21,13 @@ class ProductCard extends Component {
         })
     }
     addToCartHandler = () => {
-        console.log('add')
         _cart.addToCart({
             productId: this.props.data.id,
             count: 1
-        }).then(res => { console.log(res) })
+        }).then(res => { 
+            console.log(res);
+            this.props.showToast();
+         })
     }
     render() {
         const {data} = this.props;
@@ -41,7 +42,7 @@ class ProductCard extends Component {
                         </div>
                     </div>
                     <div className={styles.imgWrap} onClick={()=>this.onClickProductHandler(data.id)}>
-                        <img src={imgSrc} className={styles.img} />
+                        <img alt="" src={imgSrc} className={styles.img} />
                     </div>
                      
                 </div>

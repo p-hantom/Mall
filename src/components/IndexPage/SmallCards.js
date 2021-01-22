@@ -1,25 +1,28 @@
 import React, {Component} from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
-import small1 from '../../assets/images/small1.jpg'
-import small2 from '../../assets/images/small2.jpg'
-import small3 from '../../assets/images/small3.jpg'
-import Button from '../UI/Button/Button'
+// import small1 from '../../assets/images/small1.jpg'
+// import small2 from '../../assets/images/small2.jpg'
+// import small3 from '../../assets/images/small3.jpg'
+// import Button from '../UI/Button/Button'
 import ProductCard from '../UI/ProductCard/ProductCard'
 import styles from './SmallCards.module.css'
 
 const content = [
     {
-        mainImage: small1,
+        imageHost: 'http://img.mall.com/',
+        mainImage: 'small1.jpg',
         name: 'Austin Coat',
         price: '￥89.00'
     },
     {
-        mainImage: small2,
+        imageHost: 'http://img.mall.com/',
+        mainImage: 'small2.jpg',
         name: 'Baxter Parka',
         price: '￥99.00'
     },
     {
-        mainImage: small3,
+        imageHost: 'http://img.mall.com/',
+        mainImage: 'small3.jpg',
         name: 'Puffy Vest',
         price: '￥89.00'
     }

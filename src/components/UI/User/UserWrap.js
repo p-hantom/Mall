@@ -1,6 +1,6 @@
 import React from 'react'
 import Title from './UserInfoTitle'
-import Button from '../Button/Button'
+// import Button from '../Button/Button'
 
 import styles from './UserWrap.module.css'
 

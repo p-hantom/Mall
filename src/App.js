@@ -8,6 +8,9 @@ import IndexPage from './components/IndexPage/IndexPage'
 import SearchResult from './components/SearchResult/SearchResult'
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import Cart from './components/Cart/Cart'
+import Footer from './components/Footer/Footer'
+import SignUp from './components/SignUp/SignUp'
+import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder'
 
 function App() {
   const LayoutRouter = (
@@ -16,13 +19,16 @@ function App() {
         <Route path="/searchResult" component={SearchResult} />
         <Route path="/detail" component={ProductDetail} />
         <Route path="/cart" component={Cart} />
+        <Route path="/confirmOrder" component={ConfirmOrder} />
         <Route path="/" component={IndexPage} />
       </Switch>
+      <Footer />
     </Layout>
   )
   return (
       <Switch>
         <Route path="/login" component={Login} />
+        <Route path="/SignUp" component={SignUp} />
         <Route path="/" render={ props => LayoutRouter} />
       </Switch>
   );

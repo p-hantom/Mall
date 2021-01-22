@@ -8,6 +8,9 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Button from '../UI/Button/Button'
 import User from '../../service/UserService'
 import Util from '../../util/util'
+import { NavLink } from 'react-router-dom';
+
+import styles from './Login.module.css'
 
 const _user = new User();
 const _util = new Util();
@@ -37,6 +40,7 @@ class Login extends Component {
         // pass check
         if(checkResult.status) {
             _user.login(loginInfo).then(res => {
+                console.log(res)
                 _util.setStorage('userInfo', res.data.data);
                 //After login, redirect to home page
                 console.log('getstorage userinfo',_util.getStorage('userInfo'))
@@ -49,7 +53,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className={styles.loginDiv}>
                 <Logo logoStyle="small"/>
                 <UserWrap title="Login" submitTitle="Submit">
                     <InputItem 
@@ -66,6 +70,10 @@ class Login extends Component {
                     <Button btnType="userInfoSubmit" clicked={this.onSubmit}>
                         Submit
                     </Button>
+                    <NavLink
+                            to="/signUp"
+                            className={styles.faLink}
+                            >Sign up with a new account.</NavLink>
                 </UserWrap>
             </div>
         )

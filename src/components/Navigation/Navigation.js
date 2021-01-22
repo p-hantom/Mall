@@ -10,24 +10,47 @@ import Util from '../../util/util'
 import User from '../../service/UserService'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faShoppingCart, faTimes, faUser } from "@fortawesome/free-solid-svg-icons";
-import drawerToggle from './SideDrawer/DrawerToggle';
+// import drawerToggle from './SideDrawer/DrawerToggle';
+// import { unstable_concurrentAct } from 'react-dom/test-utils';
+import CartService from '../../service/CartService';
 
 const _util = new Util();
 const _user = new User();
+const _cart = new CartService();
 
 class Navigation extends Component {
     state = {
-        username: _util.getStorage('userInfo').username || '',
+        username: _util.getStorage('userInfo') && (_util.getStorage('userInfo').username || ''),
         showSearchBar: false,
-        inputValue: "" 
+        inputValue: "" ,
+        cartTotal: _util.getStorage('userInfo') ? 0 : null
     }
 
     componentDidMount() {
         this.checkLogin();
+        this.getTotalCartNumber()
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         this.checkLogin();
+        if(prevProps !== this.props) {
+            this.getTotalCartNumber()
+        }
+    }
+
+    getTotalCartNumber = () => {
+        _cart.getCartList().then(cartList => {
+            if(cartList && cartList.data && cartList.data.data){
+                let cartTotal = 0;
+                for(const item of cartList.data.data.cartProductVoList) {
+                    // console.log(item)
+                    cartTotal += item.quantity;
+                }
+                this.setState({
+                    cartTotal: cartTotal
+                })
+            }
+        })
     }
 
     logoutHandler = () => {
@@ -41,7 +64,8 @@ class Navigation extends Component {
 
     checkLogin = () => {
         _user.checkLogin().then(res => {
-            console.log('success',res)
+            // console.log('success',res)
+            
         }).catch(err => {
             //Not logged in
             console.log('err',err)
@@ -84,7 +108,10 @@ class Navigation extends Component {
 
     render() {
         const {showSearchBar, inputValue} = this.state
-        const cartText = <FontAwesomeIcon icon={faShoppingCart} />
+        const cartText = <span>
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                            <span className={styles.cartTotalText}>{this.state.cartTotal}</span>
+                        </span>
         const navSearch = !showSearchBar ? 
             <FontAwesomeIcon icon={faSearch} className={styles.faLink} onClick={this.showSearchbarHandler} /> :
             <FontAwesomeIcon icon={faTimes} className={styles.faLink} onClick={this.closeSearchbarHandler} />
@@ -120,8 +147,7 @@ class Navigation extends Component {
                                 <NavItem text="LOGIN" link="/login" className="login"/>
                                 <NavItem text="SIGN UP" link="/signup" />
                             </Aux> : <Aux>
-                                <FontAwesomeIcon icon={faUser} className={styles.fa} />
-                                <NavItem text={`HELLO, ${this.state.username}`} link="/account" />
+                                <NavItem text={`HELLO, ${this.state.username}`} link="/account" fa={faUser} />
                                 <NavItem text="LOGOUT" onClick={this.logoutHandler} link="/"/>
                             </Aux>
                         }

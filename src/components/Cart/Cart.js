@@ -4,13 +4,11 @@ import Button from '../UI/Button/Button'
 import EmptyCart from './EmptyCart'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import Util from '../../util/util'
 import CartService from '../../service/CartService'
 import Product from '../../service/ProductService'
 
 import styles from './Cart.module.css'
 const _product = new Product();
-const _util = new Util();
 const _cart = new CartService();
 class Cart extends Component {
     state = {
@@ -22,7 +20,7 @@ class Cart extends Component {
         this.getCartList();
     }
     componentDidUpdate(prevProps) {
-        if(this.props == prevProps) return;
+        if(this.props === prevProps) return;
         this.getCartList();
     }
     getCartList() {
@@ -38,12 +36,10 @@ class Cart extends Component {
     }
     // On clicking product name, redirect to product detail page
     clickPrdNameHandler = (id) => {
-        console.log('click prd id:', id)
         const params = {
             productId: id
         }
         _product.getProductDetail(params).then(res => {
-            console.log(res.data.data);
             this.props.history.push({
                 pathname: '/detail',
                 search: `?productId=${id}`,
@@ -85,7 +81,13 @@ class Cart extends Component {
             })
         }
     }
+    checkoutHandler = () => {
+        this.props.history.push({
+            pathname: '/confirmOrder'
+        })
+    }
     render() {
+        console.log(this.state.imageHost)
         const CartList = this.state.cartList.map((item,index) => 
             <CartItem 
                 key={index}
@@ -118,7 +120,7 @@ class Cart extends Component {
                             <span className={styles.subtotalNum}>{' '+this.state.total}元</span>
                         </div>
                         <div>
-                            <Button btnType="checkout">
+                            <Button btnType="checkout" clicked={this.checkoutHandler}>
                                 <span className={styles.faCart}><FontAwesomeIcon icon={faShoppingCart} /></span>
                                 Checkout</Button>
                         </div>

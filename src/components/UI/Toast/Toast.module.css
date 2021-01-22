@@ -1,0 +1,6 @@
+.toastDiv {
+    position: fixed;
+    top: 52px;
+    right: 20px;
+    z-index: 1000;
+}

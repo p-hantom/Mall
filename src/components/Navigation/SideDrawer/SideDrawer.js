@@ -6,9 +6,9 @@ import { withRouter } from "react-router-dom";
 
 import Aux from '../../../hoc/Auxiliary'
 import Backdrop from '../../UI/Backdrop/Backdrop'
-import Title from './SideDrawerContent/Title'
-import Item from './SideDrawerContent/CategoryItem'
-import ReturnButton from './SideDrawerContent/ReturnButton'
+// import Title from './SideDrawerContent/Title'
+// import Item from './SideDrawerContent/CategoryItem'
+// import ReturnButton from './SideDrawerContent/ReturnButton'
 
 import MainMenu from './SideDrawerContent/MainMenu'
 import CategoryMenu from './SideDrawerContent/CategoryMenu'
@@ -82,20 +82,20 @@ class SideDrawer extends Component {
             faTimesClasses = [styles.faTimes, styles.faOpen];
         }
 
-        const content1 = !this.state.showSubContent ?
-        (
-            <MainMenu 
-                clickDpmt={this.clickDpmtHandler} 
-                dpmt={dpmt} />
-        ) : (
-            <CategoryMenu
-                open={true}
-                clickCategory={this.clickCategoryHandler} 
-                clickReturn={this.clickReturnHandler}
-                dpmt={dpmt} 
-                categoryCon={categoryCon}
-                titleText={this.state.dpmtId}/>
-        )
+        // const content1 = !this.state.showSubContent ?
+        // (
+        //     <MainMenu 
+        //         clickDpmt={this.clickDpmtHandler} 
+        //         dpmt={dpmt} />
+        // ) : (
+        //     <CategoryMenu
+        //         open={true}
+        //         clickCategory={this.clickCategoryHandler} 
+        //         clickReturn={this.clickReturnHandler}
+        //         dpmt={dpmt} 
+        //         categoryCon={categoryCon}
+        //         titleText={this.state.dpmtId}/>
+        // )
 
         const showCategoryMenu = this.state.showSubContent;
 

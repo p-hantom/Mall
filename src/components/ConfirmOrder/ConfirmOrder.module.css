@@ -1,0 +1,26 @@
+.confirmDiv {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+    overflow: auto;
+    min-height: 500px;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    color: #444;
+}
+
+.img {
+    height: 80px;
+}
+
+.footer {
+    float: right;
+    padding-top: 20px;
+}
+.faConfirm {
+    padding-right: 7px;
+}

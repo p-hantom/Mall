@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
                 <div className={styles.secondary}>
                     <p>
-                    © 2021 Gear All Rights Reserved.
+                    © 2021 Mall All Rights Reserved.
                     </p>
                 </div>
             </div>

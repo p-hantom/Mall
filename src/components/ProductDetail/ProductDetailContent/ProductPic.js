@@ -1,4 +1,4 @@
-import { faDivide } from '@fortawesome/free-solid-svg-icons'
+// import { faDivide } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 
 import styles from './ProductPic.module.css'

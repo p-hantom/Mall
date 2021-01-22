@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ResultItem from './Content/ResultItem'
 import Aux from '../../hoc/Auxiliary'
 import ProductCard from '../UI/ProductCard/ProductCard'
 import Pagination from '../UI/Pagination/Pagination'
@@ -7,6 +6,7 @@ import Pagination from '../UI/Pagination/Pagination'
 import Product from '../../service/ProductService'
 
 import styles from './SearchResult.module.css'
+import MyToast from '../UI/Toast/Toast'
 
 const _product = new Product();
 
@@ -22,8 +22,9 @@ const results = [
 class SearchResult extends Component {
     state={
         prdList: results,
-        pageNum: 1,         //current page num
-        total: 0
+        pageNum: 0,         //current page num
+        total: 0,
+        showToast: false
     }
     componentDidMount() {
         this.getProductList();
@@ -66,24 +67,28 @@ class SearchResult extends Component {
             this.getProductList();
         })
     }
+    showAddToCartToast = () => {
+        this.setState({
+            showToast: true,
+            toastMsg: "Add to cart successfully!"
+        })
+    }
+    closeToastHandler = () => {
+        this.setState({
+            showToast: false,
+            toastMsg: ""
+        })
+    }
     render() {
         const {prdList, total} = this.state;
-        // const ResultList1 = prdList.map(item => {
-        //     return (
-        //         <ResultItem 
-        //             data={item}
-        //             key={item.id}
-        //             // onClick={() => this.onClickProductHandler(item.id)}
-        //             />
-        //     )
-        // })
         const ResultList = prdList.map((item, index) => {
             return (
                 <div className={styles.productDiv} key={index}>
                     <ProductCard 
                         data={item}
                         key={item.id}
-                        onClick={() => this.onClickProductHandler(item.id)}/>
+                        onClick={() => this.onClickProductHandler(item.id)}
+                        showToast={() => this.showAddToCartToast()}/>
                 </div>
             )
         })
@@ -94,6 +99,10 @@ class SearchResult extends Component {
                         SHOP
                     </h1>
                 </section>
+
+                <MyToast message={this.state.toastMsg} show={this.state.showToast}
+                    delay={3000} autohide onClose={this.closeToastHandler}/>
+
                 <section className={styles.main}>
                     <div>
                         <p className={styles.totalInfo}>Showing all {total} results</p>
@@ -101,15 +110,11 @@ class SearchResult extends Component {
                     <div className={styles.productsDiv}>
                         {ResultList}
                     </div>
-                    {/* <div className={styles.searchResult}>
-                        {ResultList}
-                    </div> */}
                     <Pagination defaultCurrent={1}
-                        current={this.state.pageNum}
+                        current={this.state.pageNum+1}
                         defaultPageSize={10} 
                         total={this.state.total}
                         onChange={(pageNum) => this.onPageNumChange(pageNum)}/>
-                    <div>hello</div>
                 </section>
                 
             </Aux>

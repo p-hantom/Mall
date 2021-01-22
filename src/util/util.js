@@ -2,7 +2,8 @@ import axios from 'axios'
 
 class Util {
     request(api, params=null, type='post') {
-        if(type=='post')    
+        // console.log("request api:"+api);
+        // console.log("request params:"+params);
         return axios.post(api, params)
             .then(res => {
                 const status = res.data.status;
@@ -59,6 +60,7 @@ class Util {
         const params = new URLSearchParams();
         Object.keys(paramsObj).map(key => {
             params.append(key, paramsObj[key]);
+            return 0;
         })
         return params;
     }

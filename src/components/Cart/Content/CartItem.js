@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import DropDown from '../../UI/DropDownButton/DropDownButton'
 import ProductNumAdder from '../../UI/ProductNumAdder/ProductNumAdder';
 
 import styles from './CartItem.module.css'
@@ -9,7 +8,7 @@ class CartItem extends Component {
         const {productName, 
             productPrice, 
             quantity, 
-            productStatus, 
+            // productStatus, 
             productStock, 
             productTotalPrice,
             productChecked,
@@ -25,7 +24,7 @@ class CartItem extends Component {
                             onChange={this.props.onChangeCheck} />
                     </div>
                     <div className={styles.imgCon}>
-                        <img className={styles.img} src={this.props.imageHost+productMainImage} />
+                        <img alt="" className={styles.img} src={this.props.imageHost+productMainImage} />
                     </div>
                     <ul>
                         <li>

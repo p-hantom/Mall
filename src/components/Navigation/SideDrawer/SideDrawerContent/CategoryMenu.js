@@ -5,10 +5,11 @@ import ReturnButton from './ReturnButton'
 import styles from './CategoryMenu.module.css'
 
 const categoryMenu = (props) => {
-    const list = props.categoryCon.map(item => {
+    const list = props.categoryCon.map((item,key) => {
         return (
             // to be fixed -> item.id
             <Item 
+                key={key}
                 showArrow={false}
                 text={item.text} 
                 clicked={() => props.clickCategory(item.text)}/>

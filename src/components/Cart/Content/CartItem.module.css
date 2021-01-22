@@ -2,8 +2,7 @@
     border-bottom: 0.5px solid #ddd;
     /* overflow: hidden; */
     /* For dropdown not to be hidden by div -> any better way? */
-    overflow-x: visible;
-    overflow-y: visible;
+    overflow: auto;
     min-height: 150px;
     padding: 10px 10px;
 }
@@ -27,7 +26,7 @@
 }
 .img {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .totalPrice {

@@ -10,9 +10,6 @@ import styles from './Pagination.module.css'
 //defaultPageSize   : default items per page
 //pageSize          : items per page
 class Pagination extends React.Component{
-    constructor(props){
-        super(props);
-    }
     render(){
         return (
             <div className={styles.paginationDiv}>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Button from '../Button/Button'
 import styles from './ProductNumAdder.module.css'
 
 class ProductNumAdder extends Component {

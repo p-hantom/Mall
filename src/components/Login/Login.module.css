@@ -1,0 +1,16 @@
+.loginDiv {
+    height: 100%;
+}
+
+.faLink {
+    color: #9e9e9e;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    font-family:'Lato', sans-serif;
+    transition: 0.2s ease;
+}
+.faLink:hover{
+    color: #111;
+}

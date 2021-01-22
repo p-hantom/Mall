@@ -5,10 +5,11 @@ import Title from './Title'
 import styles from './MainMenu.module.css'
 
 const mainMenu = (props) => {
-    const dpmtList = props.dpmt.map(item => {
+    const dpmtList = props.dpmt.map((item,key) => {
         return (
             // to be fixed -> item.id
             <Item 
+                key={key}
                 showArrow={true}
                 text={item.text} 
                 clicked={() => props.clickDpmt(item.text)}/>
