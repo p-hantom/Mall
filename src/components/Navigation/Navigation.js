@@ -10,13 +10,12 @@ import Util from '../../util/util'
 import User from '../../service/UserService'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faShoppingCart, faTimes, faUser } from "@fortawesome/free-solid-svg-icons";
-// import drawerToggle from './SideDrawer/DrawerToggle';
-// import { unstable_concurrentAct } from 'react-dom/test-utils';
-import CartService from '../../service/CartService';
+import { getCartList } from '../../actions'
+
+import { connect } from 'react-redux'
 
 const _util = new Util();
 const _user = new User();
-const _cart = new CartService();
 
 class Navigation extends Component {
     state = {
@@ -28,30 +27,31 @@ class Navigation extends Component {
 
     componentDidMount() {
         this.checkLogin();
-        this.getTotalCartNumber()
+        // this.getTotalCartNumber()
+        this.props.getCartList();
     }
 
     componentDidUpdate(prevProps) {
         this.checkLogin();
-        if(prevProps !== this.props) {
-            this.getTotalCartNumber()
-        }
+        // if(prevProps !== this.props) {
+        //     this.getTotalCartNumber()
+        // }
     }
 
-    getTotalCartNumber = () => {
-        _cart.getCartList().then(cartList => {
-            if(cartList && cartList.data && cartList.data.data){
-                let cartTotal = 0;
-                for(const item of cartList.data.data.cartProductVoList) {
-                    // console.log(item)
-                    cartTotal += item.quantity;
-                }
-                this.setState({
-                    cartTotal: cartTotal
-                })
-            }
-        })
-    }
+    // getTotalCartNumber = () => {
+    //     _cart.getCartList().then(cartList => {
+    //         if(cartList && cartList.data && cartList.data.data){
+    //             let cartTotal = 0;
+    //             for(const item of cartList.data.data.cartProductVoList) {
+    //                 // console.log(item)
+    //                 cartTotal += item.quantity;
+    //             }
+    //             this.setState({
+    //                 cartTotal: cartTotal
+    //             })
+    //         }
+    //     })
+    // }
 
     logoutHandler = () => {
         _user.logout().then(() => {
@@ -68,7 +68,7 @@ class Navigation extends Component {
             
         }).catch(err => {
             //Not logged in
-            console.log('err',err)
+            console.log('login err',err)
             _util.removeStorage('userInfo');
         })
     }
@@ -110,7 +110,7 @@ class Navigation extends Component {
         const {showSearchBar, inputValue} = this.state
         const cartText = <span>
                             <FontAwesomeIcon icon={faShoppingCart} />
-                            <span className={styles.cartTotalText}>{this.state.cartTotal}</span>
+                            <span className={styles.cartTotalText}>{this.props.cartNumber}</span>
                         </span>
         const navSearch = !showSearchBar ? 
             <FontAwesomeIcon icon={faSearch} className={styles.faLink} onClick={this.showSearchbarHandler} /> :
@@ -153,36 +153,23 @@ class Navigation extends Component {
                         }
                         <NavItem text="ORDERS" link="/orders"/>
                     </div>
-
-
-                    {/* <div className={styles.navLeft}>
-                        <DrawerToggle 
-                            clicked={this.props.clickDrawerToggle}/>
-                        
-                    </div>
-                    <div className={styles.navLeft}>
-                        <SearchHeader />
-                    </div>
-                    <div className={styles.navRight}>
-                        
-                        {
-                            !this.state.username ? <Aux>
-                                <NavItem text="Login" link="/login" className="login"/>
-                                <NavItem text="Sign up" link="/signup" />
-                            </Aux> : <Aux>
-                                <FontAwesomeIcon icon={faUser} className={styles.fa} />
-                                <NavItem text={`Hello, ${this.state.username}`} link="/account" />
-                                <NavItem text="Logout" onClick={this.logoutHandler} link="/"/>
-                            </Aux>
-                        }
-                        <NavItem text="Cart" link="/cart"/>
-                        <NavItem text="Orders" link="/orders"/>
-                    </div> */}
                 </div>
             </div>
-            
         )
     }
 } 
 
-export default withRouter(Navigation);
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        cartNumber: state.cart.cartNumber
+    }
+}
+
+const WrappedNavigation = withRouter(Navigation);
+
+// export default withRouter(Navigation);
+export default connect(
+    mapStateToProps,
+    {getCartList}
+)(WrappedNavigation);

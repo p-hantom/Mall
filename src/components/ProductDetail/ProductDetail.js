@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-// import ProductPic from './ProductDetailContent/ProductPic'
-// import ProductInfo from './ProductDetailContent/ProductInfo'
-// import DropDown from '../UI/DropDownButton/DropDownButton'
 import Button from '../UI/Button/Button'
 import Image from '../UI/Image/Image'
-import CartService from '../../service/CartService'
 import ProductService from '../../service/ProductService'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,8 +8,9 @@ import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 
 import styles from './ProductDetail.module.css'
 import ProductNumAdder from '../UI/ProductNumAdder/ProductNumAdder'
+import { connect } from 'react-redux'
+import { addToCart } from '../../actions'
 
-const _cart = new CartService();
 const _product = new ProductService();
 
 class ProductDetail extends Component {
@@ -37,15 +34,15 @@ class ProductDetail extends Component {
     }
     updatePrdNumHandler = (prdNum) => {
         this.setState({
-            prdNum: prdNum
+            qtyNum: prdNum
         })
-        console.log(prdNum)
     }
     addToCartHandler = () => {
-        _cart.addToCart({
+        const params = {
             productId: this.props.location.state.id,
             count: this.state.qtyNum
-        }).then(res => { console.log(res) })
+        }
+        this.props.addToCart(params);
     }
     render() {
         const { qtyNum, data, stock } = this.state;
@@ -99,4 +96,7 @@ class ProductDetail extends Component {
     }
 }
 
-export default ProductDetail;
+export default connect(
+    null,
+    { addToCart }
+)(ProductDetail);

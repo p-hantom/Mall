@@ -9,6 +9,7 @@ class Util {
                 const status = res.data.status;
                 if(status===10){
                     // Is there a better way???
+                    console.log("status === 10")
                     this.removeStorage('userInfo');
                     window.location.href = '/login'
                 }
@@ -18,6 +19,7 @@ class Util {
                 }
                 else if(status===1) {
                     //fail
+                    console.log("status === 1")
                     throw new Error(res.data.msg)
                 }
         });

@@ -3,9 +3,8 @@ import styles from './ProductCard.module.css'
 import Button from '../Button/Button'
 import brokenImage from '../../../assets/images/broken_image.png'
 import { withRouter } from "react-router-dom";
-import CartService from '../../../service/CartService'
-
-const _cart = new CartService();
+import { connect } from 'react-redux'
+import { addToCart } from '../../../actions'
 
 class ProductCard extends Component {
     state = {
@@ -21,13 +20,10 @@ class ProductCard extends Component {
         })
     }
     addToCartHandler = () => {
-        _cart.addToCart({
+        this.props.addToCart({
             productId: this.props.data.id,
             count: 1
-        }).then(res => { 
-            console.log(res);
-            this.props.showToast();
-         })
+        })
     }
     render() {
         const {data} = this.props;
@@ -58,4 +54,6 @@ class ProductCard extends Component {
     }
 }
 
-export default withRouter(ProductCard);
+const WrappedComponent = withRouter(ProductCard);
+
+export default connect(null, { addToCart })(WrappedComponent);

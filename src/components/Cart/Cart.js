@@ -4,36 +4,17 @@ import Button from '../UI/Button/Button'
 import EmptyCart from './EmptyCart'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import CartService from '../../service/CartService'
 import Product from '../../service/ProductService'
+import { connect } from 'react-redux' 
+import { updateCart, deleteFromCart, selectProduct, unselectProduct, getCartList } from '../../actions'
 
 import styles from './Cart.module.css'
 const _product = new Product();
-const _cart = new CartService();
 class Cart extends Component {
-    state = {
-        cartList: [],
-        total: 0,
-        imageHost: ''
-    }
     componentDidMount() {
-        this.getCartList();
+        this.props.getCartList();
     }
-    componentDidUpdate(prevProps) {
-        if(this.props === prevProps) return;
-        this.getCartList();
-    }
-    getCartList() {
-        // todo: 或许可以不用每次都调接口
-        _cart.getCartList().then(res => {
-            console.log('cart.js/cartlist: ',res)
-            this.setState({
-                cartList: res.data.data.cartProductVoList,
-                total: res.data.data.cartTotalPrice,
-                imageHost: res.data.data.imageHost
-            })
-        })
-    }
+
     // On clicking product name, redirect to product detail page
     clickPrdNameHandler = (id) => {
         const params = {
@@ -54,15 +35,14 @@ class Cart extends Component {
         const params = {
             productIds: id
         }
-        _cart.deleteProduct(params).then(res => {
-            this.getCartList();
-        })
+        this.props.deleteFromCart(params);
     }
     updateQtyHandler = (id, qty) => {
-        _cart.updateProduct({
+        const params = {
             productId: id,
             count: qty
-        }).then(res => {this.getCartList();})
+        }
+        this.props.updateCart(params);
     }
     changeCheckHandler = (id, checkState) => {
         const params = {
@@ -70,15 +50,11 @@ class Cart extends Component {
         }
         if(checkState === 1) {
             // Uncheck the product
-            _cart.unselectProduct(params).then(res => {
-                this.getCartList();
-            })
+            this.props.unselectProduct(params);
         }
         else if(checkState === 0) {
             // Check the product
-            _cart.selectProduct(params).then(res => {
-                this.getCartList();
-            })
+            this.props.selectProduct(params);
         }
     }
     checkoutHandler = () => {
@@ -87,19 +63,18 @@ class Cart extends Component {
         })
     }
     render() {
-        console.log(this.state.imageHost)
-        const CartList = this.state.cartList.map((item,index) => 
+        const CartList = this.props.cartList.map(item => 
             <CartItem 
-                key={index}
+                key={item.id}
                 product={item} 
-                imageHost={this.state.imageHost}
+                imageHost={this.props.imageHost}
                 onDeletePrd={this.deletePrdHandler}
                 onChangeCheck={() => this.changeCheckHandler(item.productId, item.productChecked)}
                 onClickPrdName={this.clickPrdNameHandler}
                 updatePrdNumHandler={(qty) => {return this.updateQtyHandler(item.productId, qty)}}/>
         )
 
-        const View = this.state.cartList.length===0 ?
+        const View = this.props.cartList.length===0 ?
             <EmptyCart />
             : (
                 <div className={styles.cartDiv}>
@@ -117,7 +92,7 @@ class Cart extends Component {
                     <div className={styles.footer}>
                         <div className={styles.totalDiv}>
                             <span>Subtotal:</span>
-                            <span className={styles.subtotalNum}>{' '+this.state.total}元</span>
+                            <span className={styles.subtotalNum}>{' '+this.props.totalPrice}元</span>
                         </div>
                         <div>
                             <Button btnType="checkout" clicked={this.checkoutHandler}>
@@ -133,4 +108,14 @@ class Cart extends Component {
     }
 }
 
-export default Cart;
+const mapStateToProps = (state) => {
+    return {
+        cartList: state.cart.cartList,
+        totalPrice: state.cart.totalPrice,
+        imageHost: state.cart.imageHost
+    }
+}
+
+export default connect(mapStateToProps, { 
+    updateCart, deleteFromCart, selectProduct, unselectProduct, getCartList
+})(Cart);

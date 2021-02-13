@@ -5,7 +5,8 @@ module.exports = function(app) {
   app.use(
     '/api/**',
     createProxyMiddleware({
-      // target: 'http://test.happymmall.com',
+      // target: 'http://18.191.193.63:8080',
+      // target: 'http://happymmall.com',
       target: 'http://localhost:8080',
       changeOrigin: true,
       pathRewrite: {
