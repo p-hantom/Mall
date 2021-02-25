@@ -1,4 +1,5 @@
 import axios from 'axios'
+// import { withRouter } from "react-router-dom";
 
 class Util {
     request(api, params=null, type='post') {
@@ -8,17 +9,20 @@ class Util {
             .then(res => {
                 const status = res.data.status;
                 if(status===10){
+                    // Need login
                     // Is there a better way???
                     console.log("status === 10")
                     this.removeStorage('userInfo');
-                    window.location.href = '/login'
+                    // window.location.href = '/login'
+                    // this.props.history.push('/login');
+                    throw new Error(res.data.msg)
                 }
                 else if(status===0){
-                    //success
+                    // Success
                     return res;
                 }
                 else if(status===1) {
-                    //fail
+                    // Fail
                     console.log("status === 1")
                     throw new Error(res.data.msg)
                 }

@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import cartReducer from './cartReducer'
+import cartReducer from './cartReducer';
+import redirectReducer from './redirectReducer';
 
 export default combineReducers({
-    cart: cartReducer
+    cart: cartReducer,
+    redirect: redirectReducer
 });

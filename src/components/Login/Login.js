@@ -9,6 +9,8 @@ import Button from '../UI/Button/Button'
 import User from '../../service/UserService'
 import Util from '../../util/util'
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { clearRedirect } from '../../actions'
 
 import styles from './Login.module.css'
 
@@ -18,8 +20,7 @@ const _util = new Util();
 class Login extends Component {
     state = {
         username: 'joe',
-        password: 'sleepyjoe',
-        // redirect: _mm.getUrlParam('redirect') || '/'
+        password: 'sleepyjoe'
     }
 
     onInputChange = (e) => {
@@ -35,12 +36,11 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }
-        console.log(loginInfo)
         const checkResult = _user.checkLoginInfo(loginInfo);
         // pass check
         if(checkResult.status) {
+            this.props.clearRedirect();
             _user.login(loginInfo).then(res => {
-                console.log(res)
                 _util.setStorage('userInfo', res.data.data);
                 //After login, redirect to home page
                 console.log('getstorage userinfo',_util.getStorage('userInfo'))
@@ -79,4 +79,5 @@ class Login extends Component {
         )
     }
 }
-export default Login;
+
+export default connect(null, { clearRedirect })(Login);

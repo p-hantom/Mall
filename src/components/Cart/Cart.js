@@ -7,6 +7,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Product from '../../service/ProductService'
 import { connect } from 'react-redux' 
 import { updateCart, deleteFromCart, selectProduct, unselectProduct, getCartList } from '../../actions'
+import { Redirect } from "react-router";
 
 import styles from './Cart.module.css'
 const _product = new Product();
@@ -63,6 +64,10 @@ class Cart extends Component {
         })
     }
     render() {
+        if(this.props.redirectTo) {
+            return <Redirect to={this.props.redirectTo} />;
+        }
+
         const CartList = this.props.cartList.map(item => 
             <CartItem 
                 key={item.id}
@@ -112,7 +117,8 @@ const mapStateToProps = (state) => {
     return {
         cartList: state.cart.cartList,
         totalPrice: state.cart.totalPrice,
-        imageHost: state.cart.imageHost
+        imageHost: state.cart.imageHost,
+        redirectTo: state.redirect.redirectTo
     }
 }
 

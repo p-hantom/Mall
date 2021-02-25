@@ -20,6 +20,11 @@ class ProductCard extends Component {
         })
     }
     addToCartHandler = () => {
+        if(this.props.redirectTo) {
+            this.props.history.push({
+                pathname: '/login'
+            })
+        }
         this.props.addToCart({
             productId: this.props.data.id,
             count: 1
@@ -54,6 +59,12 @@ class ProductCard extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        redirectTo: state.redirect.redirectTo
+    }
+}
+
 const WrappedComponent = withRouter(ProductCard);
 
-export default connect(null, { addToCart })(WrappedComponent);
+export default connect(mapStateToProps, { addToCart })(WrappedComponent);

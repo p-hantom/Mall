@@ -8,7 +8,7 @@ class OrderService {
     }
     // Create an order
     createOrder(params) {
-        return _util.request('/api/order/create.do',_util.getParams(params));
+        return _util.request('/api/order/create.do', _util.getParams(params));
     }
     // Get products from cart to make an order
     getOrderCartProduct() {

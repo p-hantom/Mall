@@ -11,6 +11,8 @@ import Cart from './components/Cart/Cart'
 import Footer from './components/Footer/Footer'
 import SignUp from './components/SignUp/SignUp'
 import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder'
+import Payment from './components/Payment/Payment'
+import Orders from './components/Orders/Orders'
 
 function App() {
   const LayoutRouter = (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/detail" component={ProductDetail} />
         <Route path="/cart" component={Cart} />
         <Route path="/confirmOrder" component={ConfirmOrder} />
+        <Route path="/payment" component={Payment} />
+        <Route path="/orders" component={Orders} />
         <Route path="/" component={IndexPage} />
       </Switch>
       <Footer />

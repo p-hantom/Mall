@@ -7,7 +7,8 @@ import {
     GET_CART_LIST
 } from '../actions/types';
 
-export default (state = {cartNumber: 0, cartList: []}, action) => {
+// how are the arguments passed into reducer function???
+const reducer = (state = {cartNumber: 0, cartList: []}, action) => {
     switch (action.type) {
         case ADD_TO_CART:
             return { ...state, ...action.payload };
@@ -25,3 +26,5 @@ export default (state = {cartNumber: 0, cartList: []}, action) => {
             return state;
     }
 }
+
+export default reducer;

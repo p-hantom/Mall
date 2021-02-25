@@ -11,16 +11,6 @@ class User {
 
         return axios.post('/api/user/login.do', params);
     }
-    test(t) {
-        const params = new URLSearchParams();
-        params.append('productId', '26');
-        return axios.post('/api/product/detail.do', params)
-        // return axios.post('/test/posts', {
-        //     title: 'foo',
-        //     body: 'bar',
-        //     userId: 1,
-        //   })
-    }
     register(rgstInfo) {
         const params = _util.getParams(rgstInfo);
         return _util.request('/api/user/register.do', params, 'post');
@@ -55,7 +45,7 @@ class User {
     }
     checkLogin() {
         //Check login status
-        return _util.request('/api/user/get_user_info.do')
+        return _util.request('/api/user/get_user_info.do');
     }
     logout() {
         return axios.post('/api/user/logout.do');

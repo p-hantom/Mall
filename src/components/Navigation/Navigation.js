@@ -27,31 +27,12 @@ class Navigation extends Component {
 
     componentDidMount() {
         this.checkLogin();
-        // this.getTotalCartNumber()
-        this.props.getCartList();
+        // this.props.getCartList();
     }
 
     componentDidUpdate(prevProps) {
-        this.checkLogin();
-        // if(prevProps !== this.props) {
-        //     this.getTotalCartNumber()
-        // }
+        // this.checkLogin();
     }
-
-    // getTotalCartNumber = () => {
-    //     _cart.getCartList().then(cartList => {
-    //         if(cartList && cartList.data && cartList.data.data){
-    //             let cartTotal = 0;
-    //             for(const item of cartList.data.data.cartProductVoList) {
-    //                 // console.log(item)
-    //                 cartTotal += item.quantity;
-    //             }
-    //             this.setState({
-    //                 cartTotal: cartTotal
-    //             })
-    //         }
-    //     })
-    // }
 
     logoutHandler = () => {
         _user.logout().then(() => {
@@ -65,7 +46,7 @@ class Navigation extends Component {
     checkLogin = () => {
         _user.checkLogin().then(res => {
             // console.log('success',res)
-            
+            this.props.getCartList();
         }).catch(err => {
             //Not logged in
             console.log('login err',err)
@@ -160,7 +141,6 @@ class Navigation extends Component {
 } 
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         cartNumber: state.cart.cartNumber
     }
@@ -168,7 +148,6 @@ const mapStateToProps = (state) => {
 
 const WrappedNavigation = withRouter(Navigation);
 
-// export default withRouter(Navigation);
 export default connect(
     mapStateToProps,
     {getCartList}

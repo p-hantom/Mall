@@ -10,7 +10,6 @@ import styles from './ProductDetail.module.css'
 import ProductNumAdder from '../UI/ProductNumAdder/ProductNumAdder'
 import { connect } from 'react-redux'
 import { addToCart } from '../../actions'
-
 const _product = new ProductService();
 
 class ProductDetail extends Component {
@@ -38,6 +37,11 @@ class ProductDetail extends Component {
         })
     }
     addToCartHandler = () => {
+        if(this.props.redirectTo) {
+            this.props.history.push({
+                pathname: '/login'
+            })
+        }
         const params = {
             productId: this.props.location.state.id,
             count: this.state.qtyNum
@@ -96,7 +100,13 @@ class ProductDetail extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        redirectTo: state.redirect.redirectTo
+    }
+}
+
 export default connect(
-    null,
+    mapStateToProps,
     { addToCart }
 )(ProductDetail);

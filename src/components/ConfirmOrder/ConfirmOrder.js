@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import User from '../../service/UserService'
 import Order from '../../service/OrderService'
 import Util from '../../util/util'
+import { connect } from 'react-redux';
+import { Redirect } from "react-router";
 
 import styles from './ConfirmOrder.module.css'
 
@@ -21,26 +23,51 @@ class ConfirmOrder extends Component {
         totalPrice: 0
     }
     componentDidMount() {
-        _user.checkLogin().then(res => {
-            _order.getOrderCartProduct().then(prodData => {
-                console.log(prodData.data.data)
-                const data = prodData.data.data;
-                this.setState({
-                    orderItemList: data.orderItemVoList,
-                    imageHost: data.imageHost,
-                    totalPrice: data.productTotalPrice
-                })
+        _order.getOrderCartProduct().then(prodData => {
+            console.log(prodData.data.data)
+            const data = prodData.data.data;
+            this.setState({
+                orderItemList: data.orderItemVoList,
+                imageHost: data.imageHost,
+                totalPrice: data.productTotalPrice
             })
-        }).catch(err => {
-            //Not logged in
-            console.log('err',err)
-            _util.removeStorage('userInfo');
         })
+        // _user.checkLogin().then(res => {
+        //     _order.getOrderCartProduct().then(prodData => {
+        //         console.log(prodData.data.data)
+        //         const data = prodData.data.data;
+        //         this.setState({
+        //             orderItemList: data.orderItemVoList,
+        //             imageHost: data.imageHost,
+        //             totalPrice: data.productTotalPrice
+        //         })
+        //     })
+        // }).catch(err => {
+        //     //Not logged in
+        //     console.log('err',err)
+        //     _util.removeStorage('userInfo');
+        // })
     }
     confirmHandler = () => {
-
+        const params = {
+            shippingId: 33
+        }
+        _order.createOrder(params).then(res => {
+            const data = res.data.data;
+            this.props.history.push({
+                pathname: '/payment',
+                state: { 
+                    orderNo: data.orderNo,
+                    payment: data.payment,
+                    paymentType: data.paymentTypeDesc
+                }
+            })
+        })
     }
     render() {
+        if(this.props.redirectTo) {
+            return <Redirect to={this.props.redirectTo} />;
+        }
         const orderItems = this.state.orderItemList.map((item,key) => {
             return (
                 <tr key={key}>
@@ -95,4 +122,10 @@ class ConfirmOrder extends Component {
     }
 }
 
-export default ConfirmOrder;
+const mapStateToProps = (state) => {
+    return {
+        redirectTo: state.redirect.redirectTo
+    }
+}
+
+export default connect(mapStateToProps, {})(ConfirmOrder);

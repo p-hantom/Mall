@@ -4,3 +4,5 @@ export const UPDATE_CART = 'UPDATE_CART';
 export const SELECT_PRODUCT = 'SELECT_PRODUCT';
 export const UNSELECT_PRODUCT = 'UNSELECT_PRODUCT';
 export const GET_CART_LIST = 'GET_CART_LIST';
+export const REDIRECT = 'REDIRECT';
+export const CLEAR_REDIRECT = 'CLEAR_REDIRECT';
